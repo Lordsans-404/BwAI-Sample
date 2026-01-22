@@ -1,6 +1,6 @@
 # define variables
 
-STREAMLIT_APP = app/Home.py
+STREAMLIT_APP = src/app/Home.py
 FASTAPI_APP = main
 
 .PHONY: frontend backend run_app

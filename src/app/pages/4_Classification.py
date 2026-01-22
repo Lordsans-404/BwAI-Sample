@@ -1,20 +1,18 @@
 """
 Create a Streamlit app that takes in features about the iris flower and returns the species of the flower.
 """
+import pathlib
 import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from sklearn.datasets import load_iris
 import requests
+import os
+from src.utils.loader import load_config, load_data
 
-def load_data():
-    iris = load_iris()
-    X = iris.data
-    y = iris.target
-    return X, y
+ROOT = pathlib.Path(__file__).parent.parent.parent.parent
 
 
-def app():
+def app(config: dict):
     
     # Add title and description
     st.title("Predicting Iris Flower Species")
@@ -47,7 +45,7 @@ def app():
 
     # We will plot how the train data clusters in 2D space and then see how the test data fits in it.
     # First apply PCA to reduce the dimensionality of the data to 2D
-    X, y = load_data()
+    X, y = load_data(data_path=config['data']['data_path'], get_all=True)
     pca = PCA(n_components=2)
     X_pca = pca.fit_transform(X)
 
@@ -68,4 +66,6 @@ def app():
     st.pyplot(fig)
 
 if __name__ == "__main__":
-    app()
+    config_path = os.path.join(ROOT, "config", "main.yml")
+    config = load_config(config_path)
+    app(config)
