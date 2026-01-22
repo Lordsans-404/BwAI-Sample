@@ -1,0 +1,11 @@
+model:
+  classifier: "LogisticRegression" # LogisticRegression, RandomForest, XGBoost
+  model_dir: "data/saved_models/"
+
+data:
+  data_path: "data/iris.csv"
+  test_size: 0.2
+  random_state: 42
+
+app:
+  use_model: "XGBoost"
