@@ -35,14 +35,11 @@ This `streamlit` app is deployed on `streamlit` cloud. You can access the deploy
 ## Classification Results
 The classification results are displayed in the streamlit app on a separate page and look like the following:
 
-![Classification Results](images/iris_data_classification_result.png)
+![Classification Results](data/images/iris_data_classification_result.png)
 
 ## Requirements
-requirements.yml file contains the list of all the packages required to run the code in this repository. requirements.yml is generated using the following command:
+requirements.yml file contains the list of all the packages required to run the code in this repository. 
 
-```
-conda env export --no-builds | grep -v "prefix" > requirements.yml
-```
 To create a conda environment using the requirements.yml file, run the following command:
 
 ```
