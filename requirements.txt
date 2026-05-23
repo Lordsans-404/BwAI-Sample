@@ -11,4 +11,3 @@ uvicorn
 xgboost
 joblib
 pyyaml
--e .
