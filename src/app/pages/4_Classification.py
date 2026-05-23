@@ -32,7 +32,8 @@ def app(config: dict):
     }
 
     # interact with FastAPI endpoint
-    response = requests.post("http://127.0.0.1:8000/predict", json=input_data)
+    API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+    response = requests.post(f"{API_URL}/predict", json=input_data)
 
     target_names = ['Setosa', 'Versicolor', 'Virginica']
     if st.button("Predict"):

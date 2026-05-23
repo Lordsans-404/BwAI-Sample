@@ -8,8 +8,11 @@ import matplotlib.pyplot as plt
 import io
 import requests
 
+import os
+
 # get the data from the /iris endpoint
-response = requests.get("http://127.0.0.1:8000/iris")
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+response = requests.get(f"{API_URL}/iris")
 data = response.json()
 df = pd.DataFrame(data)
 

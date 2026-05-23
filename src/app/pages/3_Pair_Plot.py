@@ -7,8 +7,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import requests
 
+import os
+
 # get the head data from fastapi endpoint /iris
-url = "http://127.0.0.1:8000/iris"
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+url = f"{API_URL}/iris"
 r = requests.get(url)
 df = pd.DataFrame(r.json())
 

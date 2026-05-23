@@ -1,0 +1,19 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source code
+COPY . .
+
+# Streamlit config for Cloud Run
+ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+ENV STREAMLIT_SERVER_HEADLESS=true
+ENV PORT 8501
+EXPOSE $PORT
+
+# Run Streamlit using the dynamic PORT
+CMD ["sh", "-c", "streamlit run src/app/Home.py --server.port ${PORT} --server.address 0.0.0.0"]
